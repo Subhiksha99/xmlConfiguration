@@ -1,0 +1,51 @@
+In spring boot we won't create objects using new keyword. Instead we ask factory to give objects.
+There are 3 ways to get object from factory
+1. XML configuration
+2. Annotation
+3. Java based Configuration
+---------------------------------------------
+XML Configuration
+1. add dependency into pom.xml (spring core and spring context) and reload the project
+2.Create a simple java class (like student, employee..)
+3. Right click the resources foulder and click xml configuration and create a xml file called applicationContext. sometimes the file may contain
+the following content
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+</beans>
+otherwise copy paste this
+4. Inside the file we need to create obj for the class for that there are two methods ---> [constructor injection, setter injection]
+5.Constructor injection
+  inside the xml file create a bean like this
+ <bean id="stu1" class="org.example.Student">
+        <constructor-arg value="99" type="int"/>
+        <constructor-arg value="Subhiksha"/>
+        <constructor-arg value="IT"/>
+        <constructor-arg value="2023" type="int"/>
+    </bean>
+In constructor injection , we need to provide all the values to the field.
+the id property is used to identify that object.
+6. create another java file with main method. Add the following code
+public class Main {
+    public static void main(String[] args) {
+       //create container
+        ApplicationContext context=new ClassPathXmlApplicationContext("ApplicationContext.xml");
+        //get bean from container
+        Student s1=(Student)context.getBean("stu1");
+        System.out.println(s1);
+        
+    }
+}
+
+7. Setter injection is another way of creating object in xml configuration
+same steps only inside the bean instead of constructor arg we need to use property tag like this
+<bean id="stu3" class="org.example.Student">
+        <property name="rollNo" value="45"></property>
+        <property name="name" value="diviya"></property>
+</bean>
+the advantage of setter injection is no need to give value for all fields,
+
+
+  
+

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="stu1" class="org.example.Student">
+        <constructor-arg value="99" type="int"/>
+        <constructor-arg value="Subhiksha"/>
+        <constructor-arg value="IT"/>
+        <constructor-arg value="2023" type="int"/>
+    </bean>
+    <bean id="stu2" class="org.example.Student">
+        <constructor-arg value="98" type="int"/>
+    </bean>
+    <bean id="stu3" class="org.example.Student">
+        <property name="rollNo" value="45"></property>
+        <property name="name" value="diviya"></property>
+        <property name="course">
+            <list>
+                <value>DAA</value>
+                <value>C#</value>
+            </list>
+        </property>
+        <property name="points">
+            <map>
+                <entry key="DAA" value="3" value-type="int" />
+                <entry key="Engineering maths" value="4" value-type="int" />
+                <entry key="lab" value="2" value-type="int" />
+            </map>
+        </property>
+    </bean>
+
+
+
+</beans>
